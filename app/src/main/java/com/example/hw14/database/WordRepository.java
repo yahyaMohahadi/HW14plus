@@ -53,12 +53,13 @@ public class WordRepository implements Reposible {
     }
 
     private void getDBAsset(Context context, Callbacks callbacks) {
+        Cursor cursor = null;
         try {
-            AssetDatabaseOpenHelper assetDatabaseOpenHelper =
-                    new AssetDatabaseOpenHelper(context);
+            AssetDataBase assetDatabaseOpenHelper =
+                    new AssetDataBase(context);
             SQLiteDatabase assetDB = assetDatabaseOpenHelper.openDatabase();
-            String queryStr = "SELECT * FROM " + AssetDatabaseOpenHelper.TABLE_NAME;
-            Cursor cursor = assetDB.rawQuery(queryStr, null);
+            String queryStr = "SELECT * FROM " + AssetDataBase.TABLE_NAME;
+            cursor = assetDB.rawQuery(queryStr, null);
             cursor.moveToFirst();
             float all = cursor.getCount();
             int now = 1;
@@ -81,6 +82,8 @@ public class WordRepository implements Reposible {
             }
         } catch (Exception e) {
             isAssetLoad = false;
+        } finally {
+            cursor.close();
         }
         callbacks.assetLoadFinish();
         isAssetLoad = true;

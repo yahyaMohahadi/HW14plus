@@ -10,14 +10,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-class AssetDatabaseOpenHelper{
+class AssetDataBase {
     public static final String TABLE_NAME = "EnglishPersianWordDatabase_EnglishPersianWordDatabase";
     private static final int DATABASE_VERSION = 1;
 
     private static final String DB_NAME ="data.sqlite";
     private Context context;
 
-    public AssetDatabaseOpenHelper(Context context) {
+    public AssetDataBase(Context context) {
         this.context = context;
     }
 
