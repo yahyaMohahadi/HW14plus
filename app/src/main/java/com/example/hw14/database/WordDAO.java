@@ -36,12 +36,9 @@ public interface WordDAO {
     @Query("SELECT * FROM WORDS WHERE languge =:language")
     List<Word> getLanguegeWords(Language language);
 
-
     @Query("SELECT COUNT(*) FROM WORDS WHERE `left`=:left ")
-    int getCointLeftWord(String left);
+    int getCountLeftWord(String left);
 
-    @Query("SELECT COUNT(*) FROM WORDS WHERE `right`=:right ")
-    int getCountRightWord(String right);
 
     @Query("SELECT COUNT(*) FROM WORDS ")
     int getCountWords();

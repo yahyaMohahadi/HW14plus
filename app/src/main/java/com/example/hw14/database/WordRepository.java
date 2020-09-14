@@ -38,7 +38,7 @@ public class WordRepository implements Reposible {
     }
 
     public boolean addAssetWord(Callbacks callbacks) {
-        if (mDataBase.getDao().getCountWords() > 70000) {
+        if (mDataBase.getDao().getCountWords() > 10000) {
             isAssetLoad = true;
         }
         if (!isAssetLoad && sBooleanPermissionForLoad) {
@@ -114,11 +114,10 @@ public class WordRepository implements Reposible {
 
     @Override
     public boolean addWord(Word word) {
-        if (mDataBase.getDao().getCointLeftWord(word.getStringLeft()) == 0 &&
-                mDataBase.getDao().getCointLeftWord(word.getStringRight()) == 0) {
+        if (mDataBase.getDao().getCountLeftWord(word.getStringLeft()) == 0 &&
+                mDataBase.getDao().getCountLeftWord(word.getStringRight()) == 0) {
             mDataBase.getDao().insertWord(word);
             return true;
-            //todo check char number for enflish and persian
 
         } else {
             return false;

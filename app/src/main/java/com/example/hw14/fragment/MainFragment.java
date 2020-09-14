@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +33,6 @@ import java.util.ArrayList;
 
 
 public class MainFragment extends Fragment {
-    public static final String KEY_CONTEX = "com.example.hw14.fragmentCONTEX";
     public static final int REQUEST_CODE_LOAD_FROM_ASSET = 1;
     public RecyclerView mRecyclerView;
     private WordAdapter mWordAdapter;
@@ -150,7 +148,7 @@ public class MainFragment extends Fragment {
 
                                     } else if (options[item].equals("delete")) {
                                         WordRepository.newInstance(getActivity()).deleteWord(word);
-                                        mWordAdapter.setWords(WordRepository.newInstance(getActivity()).getList());
+                                        mWordAdapter.setWords(WordRepository.newInstance(getActivity()).getLimitedWord(""));
                                         mWordAdapter.notifyDataSetChanged();
                                     }
                                 }
@@ -165,7 +163,7 @@ public class MainFragment extends Fragment {
                                         WordRepository
                                                 .newInstance(getActivity())
                                                 .getLimitedWord(search));
-                            }else {
+                            } else {
                                 mWordAdapter.setWords(
                                         new ArrayList<Word>()
                                 );
@@ -213,7 +211,7 @@ public class MainFragment extends Fragment {
 
     private void initViewMenu() {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(
-                String.valueOf(WordRepository.newInstance(getActivity()).getList().size())
+                String.valueOf(WordRepository.newInstance(getActivity()).getWordsCount())
         );
     }
 

@@ -20,7 +20,6 @@ public class AlertDialogAdd extends DialogFragment {
     private static Callbacks sCallbacks;
     EditText mEditTextAddRight;
     EditText mEditTextAddLeft;
-    ///todo edit text
 
     public static AlertDialogAdd newInstance(@NonNull Callbacks callbacks) {
         sCallbacks = callbacks;

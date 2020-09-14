@@ -127,6 +127,5 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.WordHoldeler> 
         };
     }
 
-    //todo get database words
 
 }
